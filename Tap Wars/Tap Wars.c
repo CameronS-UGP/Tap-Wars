@@ -130,11 +130,11 @@ unsigned int* Initpoints(unsigned int point, unsigned int points[]){
 }
 
 
-int CheckWin(unsigned int points[]){
-	if(points[0] <= 0){
+int CheckWin(unsigned int points[],unsigned int goal){
+	if(points[0] >= goal){
 		return 1;
 	}
-	else if(points[1] <= 0){
+	else if(points[1] >= goal){
 		return 2;
 	}
 	return 0;
@@ -150,60 +150,64 @@ void WinnerScreen(unsigned int winner){
 	GLCD_DrawString(10,10,buffer);
 }
 
-unsigned int ButtonHandler(unsigned int flag,unsigned int points[]){
+unsigned int ButtonHandler(unsigned int flags[],unsigned int points[]){
 	unsigned int winner;
 	TOUCH_STATE tsc_state;
 	Touch_GetState(&tsc_state);
 	//On the main menu
-	if(flag == 0){
+	if(flags[0] == 0){
 		if((tsc_state.x >= 20 && tsc_state.x <= 100) && (tsc_state.y >= 203 && tsc_state.y <= 243)){
 			//100 points
-			flag = 1;
-			FlagHandler(flag,points);
+			flags[0] = 1;
+			flags[1] = 100;
+			FlagHandler(flags[0],points);
 		}
 		else if((tsc_state.x >= 140 && tsc_state.x <= 220) && (tsc_state.y >= 203 && tsc_state.y <= 243)){
 			//150 points
-			flag = 1;
-			FlagHandler(flag,points);
+			flags[0] = 1;
+			flags[1] = 150;
+			FlagHandler(flags[0],points);
 		}
 		else if((tsc_state.x >= 260 && tsc_state.x <= 340) && (tsc_state.y >= 203 && tsc_state.y <= 243)){
 			//200 points
-			flag = 1;
-			FlagHandler(flag,points);
+			flags[0] = 1;
+			flags[1] = 200;
+			FlagHandler(flags[0],points);
 		}
 		else if((tsc_state.x >= 380 && tsc_state.x <= 480) && (tsc_state.y >= 203 && tsc_state.y <= 243)){
 			//250 points
-			flag = 1;
-			FlagHandler(flag,points);
+			flags[0] = 1;
+			flags[1] = 250;
+			FlagHandler(flags[0],points);
 		}
 	}
 	//On the game menu
-	else if(flag == 1){
+	else if(flags[0] == 1){
 		//wait_delay(500); //only needed in testing
 		if(tsc_state.pressed){ //wil be replaced with if button pressed
 			if(tsc_state.x < 240 && tsc_state.x > 0){
-				points[0]--;	//Player1
+				points[0]++;	//Player1
 				GameMenu(points);
-				winner = CheckWin(points);
+				winner = CheckWin(points,flags[1]);
 				if(winner > 0){
 					WinnerScreen(winner);
-					flag = 10;
+					flags[0] = 10;
 				}
 				wait_delay(100); //only needed in testing
 			}
 			else if(tsc_state.x > 240 && tsc_state.x < 480){
-				points[1]--;	//Player2
+				points[1]++;	//Player2
 				GameMenu(points);
-				winner = CheckWin(points);
+				winner = CheckWin(points,flags[1]);
 				if(winner > 0){
 					WinnerScreen(winner);
-					flag = 10;
+					flags[0] = 10;
 				}
 				wait_delay(100); //only needed in testing
 			}
 		}
 	}
-	return flag;
+	return *flags;
 }
 
 
@@ -211,7 +215,7 @@ unsigned int ButtonHandler(unsigned int flag,unsigned int points[]){
 
 
 int main(void){
-	unsigned int flag;
+	unsigned int flags[2];
 	unsigned int points[2];
 	int i;
 	HAL_Init(); //Init Hardware Abstraction Layer
@@ -221,16 +225,17 @@ int main(void){
 	GLCD_ClearScreen();
 	GLCD_SetBackgroundColor(GLCD_COLOR_WHITE);
   GLCD_SetForegroundColor(GLCD_COLOR_BLUE);
-	flag = 0;
-
+	flags[0] = 0; //Screen flag
+	//flags[1] Goal flag
+	
 	for(i = 0; i<2; i++){
-		points[i] = 250;
+		points[i] = 0;
 	}
 	//GameMenu();
 	//MainMenu();
-	FlagHandler(flag,points);
+	FlagHandler(flags[0],points);
 	for(;;){
-		flag = ButtonHandler(flag,points);
+		*flags = ButtonHandler(flags,points);
 		
 	}
 }

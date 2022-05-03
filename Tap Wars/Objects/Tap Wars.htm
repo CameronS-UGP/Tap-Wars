@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Tap Wars.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Tap Wars.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue May 03 13:12:02 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Tue May 03 13:38:58 2022
 <BR><P>
-<H3>Maximum Stack Usage =        400 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        408 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; ButtonHandler &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 <P>
@@ -304,7 +304,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[9e]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 400 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; ButtonHandler &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -875,7 +875,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Touch_Initialize
 </UL>
 
-<P><STRONG><a name="[c3]"></a>ButtonHandler</STRONG> (Thumb, 322 bytes, Stack size 24 bytes, tap wars.o(i.ButtonHandler))
+<P><STRONG><a name="[c3]"></a>ButtonHandler</STRONG> (Thumb, 358 bytes, Stack size 24 bytes, tap wars.o(i.ButtonHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 384 + Unknown Stack Size
 <LI>Call Chain = ButtonHandler &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
@@ -889,7 +889,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c7]"></a>CheckWin</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, tap wars.o(i.CheckWin))
+<P><STRONG><a name="[c7]"></a>CheckWin</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, tap wars.o(i.CheckWin))
 <BR><BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ButtonHandler
 </UL>
 
@@ -1483,8 +1483,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isrMessagePut
 </UL>
 
-<P><STRONG><a name="[80]"></a>main</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, tap wars.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 400 + Unknown Stack Size
+<P><STRONG><a name="[80]"></a>main</STRONG> (Thumb, 78 bytes, Stack size 24 bytes, tap wars.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 408 + Unknown Stack Size
 <LI>Call Chain = main &rArr; ButtonHandler &rArr; Touch_GetState &rArr; BSP_TS_GetState &rArr; ft5336_TS_GetTouchInfo &rArr; TS_IO_Read &rArr; I2Cx_ReadMultiple &rArr; HAL_I2C_Mem_Read &rArr; I2C_RequestMemoryRead &rArr; I2C_WaitOnTXISFlagUntilTimeout &rArr; I2C_IsAcknowledgeFailed
 </UL>
 <BR>[Calls]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Touch_Initialize
