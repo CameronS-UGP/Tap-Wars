@@ -3,6 +3,7 @@
 #include "GLCD_Config.h"
 #include "Board_GLCD.h"
 #include "Board_Touch.h"
+#include "Menus.h"
 #define wait_delay HAL_Delay
 extern GLCD_FONT GLCD_Font_6x8;
 extern GLCD_FONT GLCD_Font_16x24;
@@ -49,78 +50,6 @@ void SystemClock_Config(void) {
 	HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
 }
 
-void GameMenu(unsigned int points[]){
-	char buffer[128];
-	GLCD_ClearScreen();
-	GLCD_SetForegroundColor(GLCD_COLOR_BLACK);
-	GLCD_DrawVLine(240,0,270);
-	GLCD_SetForegroundColor(GLCD_COLOR_RED);
-	GLCD_SetFont(&GLCD_Font_16x24);
-	
-	sprintf(buffer,"Points: %i",points[0]);
-	GLCD_DrawString(20,10,buffer); //Player1s points
-	
-	sprintf(buffer,"Points: %i",points[1]);
-	GLCD_DrawString(260,10,buffer); //Player2s points
-	GLCD_SetForegroundColor(GLCD_COLOR_BLUE);
-	
-}
-
-void MainMenu(){
-	char buffer[128];
-	GLCD_ClearScreen();
-	
-	GLCD_SetFont(&GLCD_Font_16x24);
-	GLCD_SetForegroundColor(GLCD_COLOR_MAGENTA);
-	GLCD_DrawString(10,10,"INSERT NAME HERE");
-	
-	
-  GLCD_SetFont(&GLCD_Font_6x8);
-	GLCD_SetForegroundColor(GLCD_COLOR_BLUE);
-	
-	//GLCD_DrawRectangle(20,20,80,40); //Button1 x=50 to 130, y=20 to 60
-	//GLCD_DrawString(37,35,"MainMenu");
-	
-	
-	//This can change depending on what you want (These are just place holders)
-	//--------------------------------------
-	
-	
-	GLCD_DrawRectangle(20,203,80,40); // Button2 x=20 to 100, y=203 to 243
-	
-	GLCD_DrawRectangle(140,203,80,40); // Button3 x=140 to 220, y=203 to 243
-	
-	GLCD_DrawRectangle(260,203,80,40); // Button4 x=260 to 340, y=203 to 243
-	
-	GLCD_DrawRectangle(380,203,80,40); // Button5 x=380 to 480, y=203 to 243
-	
-	//--------------------------------------
-	
-	GLCD_SetForegroundColor(GLCD_COLOR_RED);
-	
-	sprintf(buffer,"%i",100); //Button2
-	GLCD_DrawString(35,220,buffer);
-	
-	sprintf(buffer,"%i",150); //Button3
-	GLCD_DrawString(155,220,buffer);
-	
-	sprintf(buffer,"%i",200); //Button4
-	GLCD_DrawString(275,220,buffer);
-	
-	sprintf(buffer,"%i",250); //Button5
-	GLCD_DrawString(395,220,buffer);
-	GLCD_SetForegroundColor(GLCD_COLOR_BLUE);
-}
-
-void FlagHandler(int flag,unsigned int points[]){
-	if(flag == 0){
-		MainMenu();
-	}
-	else if(flag == 1){
-		GameMenu(points);
-	}
-}
-
 unsigned int* Initpoints(unsigned int point, unsigned int points[]){
 	int i;
 	for(i = 0; i<2; i++){
@@ -140,73 +69,57 @@ int CheckWin(unsigned int points[],unsigned int goal){
 	return 0;
 }
 
-
-void WinnerScreen(unsigned int winner){
-	char buffer[128];
-	GLCD_ClearScreen();
-	GLCD_SetFont(&GLCD_Font_16x24);
-	GLCD_SetForegroundColor(GLCD_COLOR_GREEN);
-	sprintf(buffer,"Player%i Wins",winner);
-	GLCD_DrawString(10,10,buffer);
-}
-
 unsigned int ButtonHandler(unsigned int flags[],unsigned int points[]){
 	unsigned int winner;
 	TOUCH_STATE tsc_state;
 	Touch_GetState(&tsc_state);
+	winner = CheckWin(points,flags[1]);
 	//On the main menu
 	if(flags[0] == 0){
 		if((tsc_state.x >= 20 && tsc_state.x <= 100) && (tsc_state.y >= 203 && tsc_state.y <= 243)){
 			//100 points
 			flags[0] = 1;
 			flags[1] = 100;
-			FlagHandler(flags[0],points);
+			FlagHandler(flags,points,winner);
 		}
 		else if((tsc_state.x >= 140 && tsc_state.x <= 220) && (tsc_state.y >= 203 && tsc_state.y <= 243)){
 			//150 points
 			flags[0] = 1;
 			flags[1] = 150;
-			FlagHandler(flags[0],points);
+			FlagHandler(flags,points,winner);
 		}
 		else if((tsc_state.x >= 260 && tsc_state.x <= 340) && (tsc_state.y >= 203 && tsc_state.y <= 243)){
 			//200 points
 			flags[0] = 1;
 			flags[1] = 200;
-			FlagHandler(flags[0],points);
+			FlagHandler(flags,points,winner);
 		}
 		else if((tsc_state.x >= 380 && tsc_state.x <= 480) && (tsc_state.y >= 203 && tsc_state.y <= 243)){
 			//250 points
 			flags[0] = 1;
 			flags[1] = 250;
-			FlagHandler(flags[0],points);
+			FlagHandler(flags,points,winner);
 		}
 	}
 	//On the game menu
 	else if(flags[0] == 1){
-		//wait_delay(500); //only needed in testing
+		if(winner > 0){
+			flags[0] = 2;
+			FlagHandler(flags,points,winner);
+		}
 		if(tsc_state.pressed){ //wil be replaced with if button pressed
 			if(tsc_state.x < 240 && tsc_state.x > 0){
 				points[0]++;	//Player1
-				GameMenu(points);
-				winner = CheckWin(points,flags[1]);
-				if(winner > 0){
-					WinnerScreen(winner);
-					flags[0] = 10;
-				}
-				wait_delay(100); //only needed in testing
+				FlagHandler(flags,points,winner);
 			}
 			else if(tsc_state.x > 240 && tsc_state.x < 480){
 				points[1]++;	//Player2
-				GameMenu(points);
-				winner = CheckWin(points,flags[1]);
-				if(winner > 0){
-					WinnerScreen(winner);
-					flags[0] = 10;
-				}
-				wait_delay(100); //only needed in testing
+				FlagHandler(flags,points,winner);
 			}
 		}
 	}
+	wait_delay(100);
+	flags[2]++;
 	return *flags;
 }
 
@@ -215,8 +128,9 @@ unsigned int ButtonHandler(unsigned int flags[],unsigned int points[]){
 
 
 int main(void){
-	unsigned int flags[2];
+	unsigned int flags[3];
 	unsigned int points[2];
+	
 	int i;
 	HAL_Init(); //Init Hardware Abstraction Layer
   SystemClock_Config(); //Config Clocks
@@ -227,13 +141,14 @@ int main(void){
   GLCD_SetForegroundColor(GLCD_COLOR_BLUE);
 	flags[0] = 0; //Screen flag
 	//flags[1] Goal flag
+	flags[2] = 0; //system loop count
 	
 	for(i = 0; i<2; i++){
 		points[i] = 0;
 	}
 	//GameMenu();
 	//MainMenu();
-	FlagHandler(flags[0],points);
+	FlagHandler(flags,points,0);
 	for(;;){
 		*flags = ButtonHandler(flags,points);
 		
