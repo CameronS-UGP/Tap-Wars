@@ -114,11 +114,11 @@ int Game(int goal,TOUCH_STATE tsc_state){
 		player1 = HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_6); //Player1 D1
 		player2 = HAL_GPIO_ReadPin(GPIOG,GPIO_PIN_6); //Player2 D2
 		
-		if(player1){
+		if(!player1){
 			points[0] = points[0]+2;//Player1
 			points[1]--; //Player2
 		}
-		if(player2){
+		if(!player2){
 			points[1] = points[1]+2;//Player2
 			points[0]--; //Player1
 		}
