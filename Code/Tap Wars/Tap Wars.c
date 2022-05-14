@@ -91,6 +91,8 @@ int Game(int goal,TOUCH_STATE tsc_state){
 	char buffer[128];
 	GPIO_PinState player1;
 	GPIO_PinState player2;
+	int button1;
+	int button2;
 	int loop = 1;
 	GLCD_ClearScreen();
 	GLCD_SetForegroundColor(GLCD_COLOR_BLACK);
@@ -114,6 +116,30 @@ int Game(int goal,TOUCH_STATE tsc_state){
 		player1 = HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_6); //Player1 D1
 		player2 = HAL_GPIO_ReadPin(GPIOG,GPIO_PIN_6); //Player2 D2
 		
+		
+		
+		//check if the current state of button1 is pressed and the previous state is not pressed
+		if(button1 == 0 && !player1){
+			points[0] = points[0]+2;//Player1
+			points[1]--; //Player2
+			button1 = 1;
+		}
+		//prev state pressed current not pressed reset
+		else if(button1 == 1 && player1){
+			button1 = 0;
+		}
+		
+		//check if the current state of button1 is pressed and the previous state is not pressed
+		if(button2 == 0 && !player2){
+			points[1] = points[1]+2;//Player2
+			points[0]--; //Player1
+			button2 = 1;
+		}
+		//prev state pressed current not pressed reset
+		else if(button2 == 1 && player2){
+			button2 = 0;
+		}
+		/*
 		if(!player1){
 			points[0] = points[0]+2;//Player1
 			points[1]--; //Player2
@@ -122,7 +148,7 @@ int Game(int goal,TOUCH_STATE tsc_state){
 			points[1] = points[1]+2;//Player2
 			points[0]--; //Player1
 		}
-		
+		*/
 		
 		/*
 		if(tsc_state.pressed){ //wil be replaced with if button pressed
