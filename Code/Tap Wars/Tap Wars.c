@@ -51,7 +51,14 @@ void SystemClock_Config(void) {
 	HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
 }
 
-
+int Periphral(void){
+	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_4,GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOG,GPIO_PIN_7,GPIO_PIN_SET);
+	wait_delay(10);
+	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_4,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOG,GPIO_PIN_7,GPIO_PIN_RESET);
+	return 0;
+}
 
 
 int Winner(int winner,int points[],TOUCH_STATE tsc_state){
@@ -83,6 +90,7 @@ int Winner(int winner,int points[],TOUCH_STATE tsc_state){
 		if((tsc_state.x >= 20 && tsc_state.x <= 100) && (tsc_state.y >= 173 && tsc_state.y <= 213)){
 			return 0;
 		}
+		Periphral();
 	}
 }
 
@@ -139,29 +147,7 @@ int Game(int goal,TOUCH_STATE tsc_state){
 		else if(button2 == 1 && player2){
 			button2 = 0;
 		}
-		/*
-		if(!player1){
-			points[0] = points[0]+2;//Player1
-			points[1]--; //Player2
-		}
-		if(!player2){
-			points[1] = points[1]+2;//Player2
-			points[0]--; //Player1
-		}
-		*/
 		
-		/*
-		if(tsc_state.pressed){ //wil be replaced with if button pressed
-			if(tsc_state.x < 240 && tsc_state.x > 0){
-				points[0] = points[0]+2;//Player1
-				points[1]--; //Player2
-			}
-			else if(tsc_state.x > 240 && tsc_state.x < 480){
-				points[1] = points[1]+2;//Player2
-				points[0]--; //Player1
-			}
-		}
-		*/
 		if(points[0] >= goal){
 			loop = Winner(1,points,tsc_state);
 			return 0;
@@ -173,10 +159,6 @@ int Game(int goal,TOUCH_STATE tsc_state){
 	}
 	return 0;
 }
-
-//Main handles mainmenu
-//Function1 Handles Game
-//Function2 Handles winner 
 
 int MainMenu(void){
 	TOUCH_STATE tsc_state;
@@ -249,8 +231,13 @@ int main(void){
 	GPIO_InitTypeDef gpio0;
 	GPIO_InitTypeDef gpio1;
 	GPIO_InitTypeDef gpio2;
+	GPIO_InitTypeDef gpio3;
+	GPIO_InitTypeDef gpio4;
+	
 	__HAL_RCC_GPIOC_CLK_ENABLE();
 	__HAL_RCC_GPIOG_CLK_ENABLE();
+	__HAL_RCC_GPIOB_CLK_ENABLE();
+	
 	
 	gpio0.Mode = GPIO_MODE_OUTPUT_PP;
 	gpio0.Pull = GPIO_NOPULL;
@@ -268,7 +255,20 @@ int main(void){
 	gpio2.Pin = GPIO_PIN_6;
 	HAL_GPIO_Init(GPIOG, &gpio2);
 	
+	gpio3.Mode = GPIO_MODE_OUTPUT_PP;
+	gpio3.Pull = GPIO_NOPULL;
+	gpio3.Speed = GPIO_SPEED_HIGH;
+	gpio3.Pin = GPIO_PIN_4;
+	HAL_GPIO_Init(GPIOB, &gpio3);
 	
+	gpio4.Mode = GPIO_MODE_OUTPUT_PP;
+	gpio4.Pull = GPIO_NOPULL;
+	gpio4.Speed = GPIO_SPEED_HIGH;
+	gpio4.Pin = GPIO_PIN_7;
+	HAL_GPIO_Init(GPIOG, &gpio4);
+	
+	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_4,GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOG,GPIO_PIN_7,GPIO_PIN_RESET);
 	
 	while(1){
 		MainMenu();
