@@ -1,0 +1,16 @@
+/**
+
+@mainpage Tap Wars
+
+@auther Andrew Sturdy, Cameron Shipman
+
+Taps wars is a player vs. player tapping game where the person who reaches the requires score first wins.
+To start the game simply choose what goal you want to be aiming for then you can mash away.
+Each button press increases your score by 2 and reduces your opponents by 1.
+At the end of the game you can see how many points each player finished with.
+
+
+
+
+
+*/
