@@ -10,6 +10,11 @@ Each button press increases your score by 2 and reduces your opponents by 1.
 At the end of the game you can see how many points each player finished with.
 
 
+We chose to increase your points by 2 and lower your opponents by 1 each button press to make the end scores give a more accurate comparison in tapping speeds.
+The longer the game the more similar you both are in tapping speed.
+
+The application sometimes experiences a visual bug where negative numbers are not displayed accuratly, this only occures when one player goes significantly into the negatives.
+If both players are playing at a similar pace the bug does not occure.
 
 
 
