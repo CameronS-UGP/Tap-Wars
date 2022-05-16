@@ -54,9 +54,10 @@ void SystemClock_Config(void) {
 int Periphral(void){
 	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_4,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOG,GPIO_PIN_7,GPIO_PIN_SET);
-	wait_delay(10);
+	wait_delay(50);
 	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_4,GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOG,GPIO_PIN_7,GPIO_PIN_RESET);
+	wait_delay(20);
 	return 0;
 }
 
