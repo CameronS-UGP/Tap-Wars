@@ -1,0 +1,19 @@
+var NAVTREEINDEX0 =
+{
+"_tap_wars_8c.html":[1,0,0],
+"files.html":[1,0],
+"globals.html":[1,1,0],
+"globals_func.html":[1,1,1],
+"group___m_a_i_n.html":[0,0],
+"group___m_a_i_n.html#ga70af21c671abfcc773614a9a4f63d920":[0,0,2],
+"group___main___loop.html":[0,0,1],
+"group___main___loop.html#ga840291bc02cba5474a4cb46a9b9566fe":[0,0,1,0],
+"group___screens.html":[0,0,0],
+"group___screens.html#ga416be25d217c06a6cb876ef3be3e95ca":[0,0,0,0],
+"group___screens.html#ga5d513f43e53baccc5b1c9dda46d7944c":[0,0,0,2],
+"group___screens.html#gaf58ce4bc09a8cc6977b585a1f58bbaca":[0,0,0,3],
+"group___screens.html#gafd373b7346352fc367677280a339cf0a":[0,0,0,1],
+"index.html":[],
+"modules.html":[0],
+"pages.html":[]
+};

@@ -1,0 +1,41 @@
+\begin{theindex}
+
+  \item {Game}
+    \subitem {Screens}, \hyperpage{8}
+
+  \indexspace
+
+  \item {MAIN}, \hyperpage{7}
+    \subitem {SystemClock\_Config}, \hyperpage{7}
+  \item {main}
+    \subitem {Main\_Loop}, \hyperpage{10}
+  \item {Main\_Loop}, \hyperpage{10}
+    \subitem {main}, \hyperpage{10}
+  \item {MainMenu}
+    \subitem {Screens}, \hyperpage{8}
+
+  \indexspace
+
+  \item {Periphral}
+    \subitem {Screens}, \hyperpage{9}
+
+  \indexspace
+
+  \item {Screens}, \hyperpage{8}
+    \subitem {Game}, \hyperpage{8}
+    \subitem {MainMenu}, \hyperpage{8}
+    \subitem {Periphral}, \hyperpage{9}
+    \subitem {Winner}, \hyperpage{9}
+  \item {SystemClock\_Config}
+    \subitem {MAIN}, \hyperpage{7}
+
+  \indexspace
+
+  \item {TapWars.c}, \hyperpage{11}
+
+  \indexspace
+
+  \item {Winner}
+    \subitem {Screens}, \hyperpage{9}
+
+\end{theindex}

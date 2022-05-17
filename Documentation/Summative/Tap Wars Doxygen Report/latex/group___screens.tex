@@ -1,0 +1,105 @@
+\hypertarget{group___screens}{}\doxysection{Screens}
+\label{group___screens}\index{Screens@{Screens}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___screens_ga5d513f43e53baccc5b1c9dda46d7944c}{Periphral}} (void)
+\begin{DoxyCompactList}\small\item\em This function turns on and of GPIO pins needed to control the buzzer and LED. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___screens_gaf58ce4bc09a8cc6977b585a1f58bbaca}{Winner}} (int winner, int points\mbox{[}$\,$\mbox{]}, TOUCH\+\_\+\+STATE tsc\+\_\+state)
+\begin{DoxyCompactList}\small\item\em This function draws the Win screen and controls the button on the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___screens_ga416be25d217c06a6cb876ef3be3e95ca}{Game}} (int goal, TOUCH\+\_\+\+STATE tsc\+\_\+state)
+\begin{DoxyCompactList}\small\item\em This function draws the game screen and controls the gaining of points. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{group___screens_gafd373b7346352fc367677280a339cf0a}{Main\+Menu}} (void)
+\begin{DoxyCompactList}\small\item\em This function draws the main menu and controls all the buttons on the main menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{group___screens_ga416be25d217c06a6cb876ef3be3e95ca}\label{group___screens_ga416be25d217c06a6cb876ef3be3e95ca}} 
+\index{Screens@{Screens}!Game@{Game}}
+\index{Game@{Game}!Screens@{Screens}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily int Game (\begin{DoxyParamCaption}\item[{int}]{goal,  }\item[{TOUCH\+\_\+\+STATE}]{tsc\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+This function draws the game screen and controls the gaining of points. 
+
+\begin{DoxyNote}{Note}
+This function only works with external GPIO pins D1 \& D2. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em goal} & \+: The amount of points required to win, tsc\+\_\+state \+: the state of the screen. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em NA} & (Returns 0 to exit function). \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___screens_gafd373b7346352fc367677280a339cf0a}\label{group___screens_gafd373b7346352fc367677280a339cf0a}} 
+\index{Screens@{Screens}!MainMenu@{MainMenu}}
+\index{MainMenu@{MainMenu}!Screens@{Screens}}
+\doxysubsubsection{\texorpdfstring{MainMenu()}{MainMenu()}}
+{\footnotesize\ttfamily int Main\+Menu (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function draws the main menu and controls all the buttons on the main menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em NA} & (Returns 0 to exit function). \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___screens_ga5d513f43e53baccc5b1c9dda46d7944c}\label{group___screens_ga5d513f43e53baccc5b1c9dda46d7944c}} 
+\index{Screens@{Screens}!Periphral@{Periphral}}
+\index{Periphral@{Periphral}!Screens@{Screens}}
+\doxysubsubsection{\texorpdfstring{Periphral()}{Periphral()}}
+{\footnotesize\ttfamily void Periphral (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function turns on and of GPIO pins needed to control the buzzer and LED. 
+
+\begin{DoxyNote}{Note}
+This function is hard coded to turn on D3 \& D4. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{group___screens_gaf58ce4bc09a8cc6977b585a1f58bbaca}\label{group___screens_gaf58ce4bc09a8cc6977b585a1f58bbaca}} 
+\index{Screens@{Screens}!Winner@{Winner}}
+\index{Winner@{Winner}!Screens@{Screens}}
+\doxysubsubsection{\texorpdfstring{Winner()}{Winner()}}
+{\footnotesize\ttfamily int Winner (\begin{DoxyParamCaption}\item[{int}]{winner,  }\item[{int}]{points\mbox{[}$\,$\mbox{]},  }\item[{TOUCH\+\_\+\+STATE}]{tsc\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+This function draws the Win screen and controls the button on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em winner} & \+: Who won, points\mbox{[}\mbox{]} \+: the array holding each players points, tsc\+\_\+state \+: the state of the screen. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em NA} & (Returns 0 to exit function). \\
+\hline
+\end{DoxyRetVals}

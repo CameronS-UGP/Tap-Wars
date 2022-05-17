@@ -1,0 +1,16 @@
+\indexentry{MAIN@{MAIN}|hyperpage}{7}
+\indexentry{MAIN@{MAIN}!SystemClock\_Config@{SystemClock\_Config}|hyperpage}{7}
+\indexentry{SystemClock\_Config@{SystemClock\_Config}!MAIN@{MAIN}|hyperpage}{7}
+\indexentry{Screens@{Screens}|hyperpage}{8}
+\indexentry{Screens@{Screens}!Game@{Game}|hyperpage}{8}
+\indexentry{Game@{Game}!Screens@{Screens}|hyperpage}{8}
+\indexentry{Screens@{Screens}!MainMenu@{MainMenu}|hyperpage}{8}
+\indexentry{MainMenu@{MainMenu}!Screens@{Screens}|hyperpage}{8}
+\indexentry{Screens@{Screens}!Periphral@{Periphral}|hyperpage}{9}
+\indexentry{Periphral@{Periphral}!Screens@{Screens}|hyperpage}{9}
+\indexentry{Screens@{Screens}!Winner@{Winner}|hyperpage}{9}
+\indexentry{Winner@{Winner}!Screens@{Screens}|hyperpage}{9}
+\indexentry{Main\_Loop@{Main\_Loop}|hyperpage}{10}
+\indexentry{Main\_Loop@{Main\_Loop}!main@{main}|hyperpage}{10}
+\indexentry{main@{main}!Main\_Loop@{Main\_Loop}|hyperpage}{10}
+\indexentry{TapWars.c@{TapWars.c}|hyperpage}{11}
