@@ -1,3 +1,15 @@
+/**
+  ******************************************************************************
+  * @file    TapWars.c
+  * @author  Andrew Sturdy, Cameron Shipman
+  * @version V1.0.0
+  * @date    13-May-2022
+  * @brief   This file provides all program functions
+  ******************************************************************************
+*/
+
+
+/* Includes ------------------------------------------------------------------*/
 #include "stdio.h"
 #include "stm32f7xx_hal.h"
 #include "stm32f7xx_hal_gpio.h"
@@ -16,6 +28,10 @@ uint32_t HAL_GetTick(void) {
 }
 #endif
 
+/** @defgroup MAIN
+* @brief main file
+* @{
+*/ 
 
 /**
 * System Clock Configuration
@@ -51,17 +67,31 @@ void SystemClock_Config(void) {
 	HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
 }
 
-int Periphral(void){
+
+/** @defgroup Screens
+* @{
+*/ 
+
+/**
+  * @brief This function turns on and of GPIO pins needed to control the buzzer and LED.
+  * @note This function is hard coded to turn on D3 & D4.
+  * @param None
+  * @retval None
+  */
+void Periphral(void){
 	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_4,GPIO_PIN_SET);
 	HAL_GPIO_WritePin(GPIOG,GPIO_PIN_7,GPIO_PIN_SET);
 	wait_delay(50);
 	HAL_GPIO_WritePin(GPIOB,GPIO_PIN_4,GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(GPIOG,GPIO_PIN_7,GPIO_PIN_RESET);
 	wait_delay(20);
-	return 0;
 }
 
-
+/**
+  * @brief This function draws the Win screen and controls the button on the screen.
+	* @param winner : Who won, points[] : the array holding each players points, tsc_state : the state of the screen.
+  * @retval NA (Returns 0 to exit function).
+  */
 int Winner(int winner,int points[],TOUCH_STATE tsc_state){
 	char buffer[128];
 	
@@ -94,6 +124,14 @@ int Winner(int winner,int points[],TOUCH_STATE tsc_state){
 		Periphral();
 	}
 }
+
+/**
+  * @brief This function draws the game screen and controls the gaining of points.
+  * @note This function only works with external GPIO pins D1 & D2.
+	* @param goal : The amount of points required to win, tsc_state : the state of the screen.
+  * @retval NA (Returns 0 to exit function).
+  */
+
 
 int Game(int goal,TOUCH_STATE tsc_state){
 	int points[2];
@@ -160,6 +198,13 @@ int Game(int goal,TOUCH_STATE tsc_state){
 	}
 	return 0;
 }
+
+
+/**
+  * @brief This function draws the main menu and controls all the buttons on the main menu.
+	* @param None
+  * @retval NA (Returns 0 to exit function).
+  */
 
 int MainMenu(void){
 	TOUCH_STATE tsc_state;
@@ -228,7 +273,23 @@ int MainMenu(void){
 	}
 	return 0;
 }
+
+/**
+* @}
+*/ 
+
+/** @defgroup Main_Loop
+* @{
+*/ 
+
+/**
+  * @brief (Main Loop) This function initialises GPIO pins and calls the mainmenu screen.
+	* @note This function initialises D0,D1,D2,D3 & D4
+	* @param None
+  * @retval None
+  */
 int main(void){
+	
 	GPIO_InitTypeDef gpio0;
 	GPIO_InitTypeDef gpio1;
 	GPIO_InitTypeDef gpio2;
@@ -275,3 +336,10 @@ int main(void){
 		MainMenu();
 	}
 }
+/**
+* @}
+*/ 
+/**
+* @}
+*/
+
