@@ -1,5 +1,10 @@
 \begin{theindex}
 
+  \item {C:/Users/activ/OneDrive/Documents/School/University/Second Year/Embedded Systems/CWK Folder/Documentation/Doxygen/doxygen\_1/TapWars.c}, 
+		\hyperpage{11}
+
+  \indexspace
+
   \item {Game}
     \subitem {Screens}, \hyperpage{8}
 
@@ -28,10 +33,6 @@
     \subitem {Winner}, \hyperpage{9}
   \item {SystemClock\_Config}
     \subitem {MAIN}, \hyperpage{7}
-
-  \indexspace
-
-  \item {TapWars.c}, \hyperpage{11}
 
   \indexspace
 

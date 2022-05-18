@@ -41,7 +41,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "Tap wars"
+PROJECT_NAME           = "Tap Wars"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -53,21 +53,21 @@ PROJECT_NUMBER         = 1.0
 # for a project that appears at the top of each page and should give viewer a
 # quick idea about the purpose of the project. Keep the description short.
 
-PROJECT_BRIEF          = "2 Player VS. clicker game"
+PROJECT_BRIEF          = "Tap Wars Documentation Report"
 
 # With the PROJECT_LOGO tag one can specify a logo or an icon that is included
 # in the documentation. The maximum height of the logo should not exceed 55
 # pixels and the maximum width should not exceed 200 pixels. Doxygen will copy
 # the logo to the output directory.
 
-PROJECT_LOGO           = "C:/Users/Andrew/Documents/UEA/Doxygen/Tap Wars Doxygen Report/UEA_LOGO.png"
+PROJECT_LOGO           = "C:/Users/activ/OneDrive/Documents/School/University/Second Year/Embedded Systems/CWK Folder/Documentation/Doxygen/doxygen_1/Tap_Wars_Logo_5_resize.png"
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = "C:/Users/Andrew/Documents/UEA/Doxygen/Tap Wars Doxygen Report"
+OUTPUT_DIRECTORY       = "C:\Users\activ\OneDrive\Documents\School\University\Second Year\Embedded Systems\CWK Folder\Documentation\Doxygen\doxygen_1"
 
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create up to 4096
 # sub-directories (in 2 levels) under the output directory of each output format
@@ -906,7 +906,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = "C:/Users/Andrew/Documents/UEA/Doxygen/Tap Wars Doxygen Report"
+INPUT                  = "C:\Users\activ\OneDrive\Documents\School\University\Second Year\Embedded Systems\CWK Folder\Documentation\Doxygen\doxygen_1"
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses
@@ -1638,7 +1638,7 @@ DISABLE_INDEX          = NO
 # The default value is: NO.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-GENERATE_TREEVIEW      = YES
+GENERATE_TREEVIEW      = NO
 
 # When both GENERATE_TREEVIEW and DISABLE_INDEX are set to YES, then the
 # FULL_SIDEBAR option determines if the side bar is limited to only the treeview
